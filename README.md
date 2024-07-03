@@ -116,19 +116,22 @@ The configuration bits are set to:
 The main code initializes the ports, sets up serial communication, initializes the LCD, and reads data from the sensors. It displays the data on the LCD and sends it via serial communication. The distance is measured using the ultrasonic sensor.
 
 ## Functions
-void initPorts(void): Initializes the ports.
-unsigned int getDistance(): Measures distance using the ultrasonic sensor.
-void delay_ms(unsigned int n): Provides a delay in milliseconds.
-void main(void): Main function that sets up the system and continuously reads sensor data, updates the LCD, and handles serial communication.
-Usage
-Connect the hardware components as per the circuit diagram.
-Flash the PIC18F4620 microcontroller with the provided code.
-Power the circuit with a suitable DC power source (>= 7.5V).
-The system will display the initial message on the LCD, read the temperature and distance, and update the display.
+- void initPorts(void): Initializes the ports.
+- unsigned int getDistance(): Measures distance using the ultrasonic sensor.
+- void delay_ms(unsigned int n): Provides a delay in milliseconds.
+- void main(void): Main function that sets up the system and continuously reads sensor data, updates the LCD, and handles serial communication.
+## Usage
+1. Connect the hardware components as per the circuit diagram.
+2. Flash the PIC18F4620 microcontroller with the provided code.
+3. Use Dr. Raed Bootloader software to open port using ``` 
+ get available ports  -> open port (choose usb serial communication port, you can find it in device manager) -> read last byte -> it must shows 1FF if successful or time out if NOT -> open file ( load your hex file you can find it in MPLAB X projects --> YourProject --> dis --> default --> production) -> erase and program PIC -> Excute User Program.```
+4. The system will display the initial message on the LCD, read the temperature and distance, and update the display.
 Data can be sent and received via the serial port using an FTDI module connected to a PC.
 Circuit Diagram
 
 Ensure that all connections are made correctly as per the diagram to avoid any damage to the components or incorrect readings.
+### PIC Bootloader Software By Dr.Raed Qadi
+<img width="661" alt="image" src="https://github.com/rayhan-shhadeh/Microcontroller-PIC18F4620/assets/51097934/63c7546e-965b-452c-a71f-f6000d5d2523">
 
 ## Notes
 The system uses an 8 MHz crystal oscillator. Ensure that the crystal and capacitors are correctly connected to the oscillator pins.
